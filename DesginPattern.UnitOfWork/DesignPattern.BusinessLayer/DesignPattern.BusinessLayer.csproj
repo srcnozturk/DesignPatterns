@@ -18,4 +18,9 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DesignPattern.DataAccessLayer\DesignPattern.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\DesignPattern.EntityLayer\DesignPattern.EntityLayer.csproj" />
+  </ItemGroup>
+
 </Project>
