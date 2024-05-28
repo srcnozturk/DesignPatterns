@@ -1,4 +1,9 @@
+using DesignPattern.BusinessLayer.Abstract;
+using DesignPattern.BusinessLayer.Concrete;
+using DesignPattern.DataAccessLayer.Abstract;
 using DesignPattern.DataAccessLayer.Concrete;
+using DesignPattern.DataAccessLayer.EntityFramework;
+using DesignPattern.DataAccessLayer.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +30,9 @@ namespace DesignPattern.UnitOfWorks
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ICustomerDal, EfCustomerDal>();
+            services.AddScoped<ICustomerService, CustomerManager>();
+            services.AddScoped<IUnitOfWorkDal, UnitOfWorkDal>();
             services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt =>
             opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
