@@ -6,15 +6,10 @@ using DesignPattern.DataAccessLayer.EntityFramework;
 using DesignPattern.DataAccessLayer.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DesignPattern.UnitOfWorks
 {
@@ -34,7 +29,7 @@ namespace DesignPattern.UnitOfWorks
             services.AddScoped<ICustomerService, CustomerManager>();
             services.AddScoped<IUnitOfWorkDal, UnitOfWorkDal>();
             services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt =>
-            opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
         }
 

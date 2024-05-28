@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DesignPattern.Repository
+namespace DesignPattern.PresentationLayer
 {
     public class Program
     {

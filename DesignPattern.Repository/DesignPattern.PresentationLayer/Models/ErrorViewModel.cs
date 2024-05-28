@@ -1,6 +1,6 @@
 using System;
 
-namespace DesignPattern.Repository.Models
+namespace DesignPattern.PresentationLayer.Models
 {
     public class ErrorViewModel
     {
