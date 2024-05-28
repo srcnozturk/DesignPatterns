@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DesginPattern.UnitOfWork
+namespace DesignPattern.UnitOfWorks
 {
     public class Startup
     {

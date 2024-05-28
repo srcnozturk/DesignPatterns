@@ -1,4 +1,4 @@
-﻿using DesginPattern.UnitOfWork.Models;
+﻿using DesignPattern.UnitOfWorks.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DesginPattern.UnitOfWork.Controllers
+namespace DesignPattern.UnitOfWorks.Controllers
 {
     public class HomeController : Controller
     {
