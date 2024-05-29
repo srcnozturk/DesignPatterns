@@ -4,7 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RepositoryDesignPattern.BusinessLayer.Abstract;
+using RepositoryDesignPattern.BusinessLayer.Concrete;
+using RepositoryDesignPattern.DataAccessLayer.Abstract;
 using RepositoryDesignPattern.DataAccessLayer.Concrete;
+using RepositoryDesignPattern.DataAccessLayer.EntityFramework;
 
 namespace DesignPattern.PresentationLayer
 {
@@ -20,6 +24,12 @@ namespace DesignPattern.PresentationLayer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<ICategoryDal, EfCategoryDal>();
+
+            services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<IProductDal, EfProductDal>();
+
             services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt =>
                 opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
