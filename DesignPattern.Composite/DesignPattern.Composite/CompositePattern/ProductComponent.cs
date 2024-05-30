@@ -2,14 +2,14 @@
 {
     public class ProductComponent : IComponent
     {
-        public ProductComponent(int id, int name)
+        public ProductComponent(int id, string name)
         {
             Id = id;
             Name = name;
         }
 
         public int Id { get ; set  ; }
-        public int Name { get  ; set ; }
+        public string Name { get  ; set ; }
 
         public string Display()
         {

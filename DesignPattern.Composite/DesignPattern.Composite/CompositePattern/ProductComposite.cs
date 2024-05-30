@@ -5,10 +5,10 @@ namespace DesignPattern.Composite.CompositePattern
     public class ProductComposite : IComponent
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
         private List<IComponent> _components;
 
-        public ProductComposite(int id, int name)
+        public ProductComposite(int id, string name)
         {
             Id = id;
             Name = name;

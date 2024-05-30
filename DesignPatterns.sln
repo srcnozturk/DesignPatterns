@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPattern.PresentationL
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7-Composite", "7-Composite", "{DFBCF2D7-F310-476E-BBCC-194DA73A5CDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPattern.Composite", "DesignPattern.Composite\DesignPattern.Composite\DesignPattern.Composite.csproj", "{F459CA27-54BB-4F81-9FA2-A342F8952964}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPattern.Composite", "DesignPattern.Composite\DesignPattern.Composite\DesignPattern.Composite.csproj", "{F459CA27-54BB-4F81-9FA2-A342F8952964}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
