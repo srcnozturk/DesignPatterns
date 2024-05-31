@@ -1,32 +1,42 @@
-using System.Reflection;
 using DesignPattern.Mediator.DAL;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-builder.Services.AddDbContext<Context>();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+public static class Program
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+
+    public static void Main(string[] args)
+    {
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+        builder.Logging.AddConsole();
+        AddServices(builder);
+        builder.Services.AddControllersWithViews();
+        builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+        builder.Services.AddDbContext<Context>();
+        WebApplication app = builder.Build();
+        app.Run();
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+
+    }
+
+    private static void AddServices(WebApplicationBuilder builder)
+    {
+        builder.Services.AddDbContext<Context>(ConfigureDBContextOptions);
+        builder.Services.AddCors();
+        builder.Services.AddEndpointsApiExplorer();
+
+    }
+
+    private static void ConfigureDBContextOptions(IServiceProvider serviceProvider, DbContextOptionsBuilder options)
+    {
+        IConfiguration? configuration = serviceProvider.GetService<IConfiguration>() ?? throw new ApplicationException();
+        options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+        options.LogTo(Console.WriteLine, LogLevel.Information); //TODO release modunda loglamayý yapmamalý
+        options.EnableSensitiveDataLogging(); //TODO release modunda olmamalý
+    }
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
