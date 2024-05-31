@@ -1,4 +1,4 @@
-﻿namespace DesignPattern.Iterator.IteratorPattern
+﻿namespace DesignPattern.Iterator.IteratorPattern.Concrete
 {
     public class VisitRoute
     {
