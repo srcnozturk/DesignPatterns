@@ -9,5 +9,6 @@ namespace DesignPattern.Decorator.DAL
             optionsBuilder.UseSqlServer("server=SERCAN; initial catalog=DecoratorDPDb; integrated security=true");
         }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Notifier> Notifiers { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DesignPattern.Decorator.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240603123217_mig1")]
+    [Migration("20240603123659_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,30 @@ namespace DesignPattern.Decorator.Migrations
                     b.HasKey("MessageID");
 
                     b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("DesignPattern.Decorator.DAL.Notifier", b =>
+                {
+                    b.Property<int>("NotifierID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NotifierChannel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NotifierCreator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NotifierSubject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NotifierType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("NotifierID");
+
+                    b.ToTable("Notifiers");
                 });
 #pragma warning restore 612, 618
         }

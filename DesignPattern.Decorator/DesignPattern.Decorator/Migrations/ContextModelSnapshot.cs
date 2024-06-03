@@ -41,6 +41,30 @@ namespace DesignPattern.Decorator.Migrations
 
                     b.ToTable("Messages");
                 });
+
+            modelBuilder.Entity("DesignPattern.Decorator.DAL.Notifier", b =>
+                {
+                    b.Property<int>("NotifierID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NotifierChannel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NotifierCreator")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NotifierSubject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NotifierType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("NotifierID");
+
+                    b.ToTable("Notifiers");
+                });
 #pragma warning restore 612, 618
         }
     }
